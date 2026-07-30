@@ -1,0 +1,25 @@
+/* recap-dark：战报向兜底设计系统。
+   色彩关系参照近黑画布 + 单一信号紫强调色（近似 Dope Security 的关系），
+   但只用 19 个统一令牌名——组件层看不出这套值来自哪个具体设计系统。
+   直接当 theme/tokens.css 用：没有真实设计系统输入时，把这个文件复制过去即可跑。 */
+:root {
+  --bg: #090909;
+  --bg-2: #474747;
+  --bg-sunken: #050505;
+  --fg: #f7f9fa;
+  --fg-2: #f0f0f0;
+  --fg-3: #828384;
+  --hair: rgba(255,255,255,.12);
+  --accent: #af50ff;
+  --accent-2: #e1bdff;
+  --invert-bg: #f0f0f0;
+  --invert-fg: #090909;
+  --font-cn: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --font-mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+  --pad: 20px;
+  --gap: 56px;
+  --maxw: 1240px;
+}

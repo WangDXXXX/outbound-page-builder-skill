@@ -1,0 +1,45 @@
+# 过程性/内部措辞
+复盘
+拍板
+台账
+断言
+口径
+走查
+蓝军
+黑话
+handoff
+花名册
+发布单
+假绿
+占位
+待确认
+内部
+SOP
+勘场
+压测
+妙搭
+供应商
+物料
+推流
+生产库
+seed
+DML
+admin
+PLACEHOLDER
+# 装饰性英文（大写形式，大小写敏感）
+DATE
+VENUE
+FORM
+HOST
+RECAP
+CONF
+FEISHU
+BEIJING
+HANGZHOU
+# 广告法绝对化用语
+最强
+第一名
+顶级
+国内最
+全国最
+最佳

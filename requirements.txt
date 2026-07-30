@@ -1,0 +1,7 @@
+# 硬依赖：缺任何一个，核心链路跑不完
+playwright>=1.40
+Pillow>=10.0
+PyYAML>=6.0
+
+# 软依赖：缺了会降级，preflight 会告诉你降到什么程度
+opencv-python>=4.8   # 二维码解码验证；缺则降级为人工扫码

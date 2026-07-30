@@ -1,0 +1,30 @@
+regex:
+  - id: contrast_pair
+    desc: 否定式排比「不是A而是B」及变体（蓝军14 + 用户明令 + 覆盖 wu-mengzhi 的 Contrast pair）
+    pattern: '不是[^，。！？；\n]{1,24}[，,]?\s*而是'
+  - id: contrast_pair_bing_fei
+    desc: 变体「并非…而是…」
+    pattern: '并非[^，。！？；\n]{1,24}[，,]?\s*而是'
+  - id: contrast_pair_bushi_shi_no_er
+    desc: 变体「不是…，是…」（丢了「而」的同款句式，必须有逗号分隔两半，否则误伤跨分句的偶发「不是…是…」）
+    pattern: '不是[^，。！？；\n]{1,24}，\s*是'
+  - id: contrast_pair_bingfei_shi_no_er
+    desc: 变体「并非…，是…」（同上，丢了「而」）
+    pattern: '并非[^，。！？；\n]{1,24}，\s*是'
+  - id: contrast_pair_yushuo
+    desc: 变体「与其说…不如说…」
+    pattern: '与其说[^，。！？；\n]{1,24}[，,]?\s*不如说'
+  - id: contrast_pair_bushi_shi
+    desc: 变体「不只是…更是…」
+    pattern: '不[只仅]是[^，。！？；\n]{1,24}[，,]?\s*更是'
+  - id: em_dash_run
+    desc: 破折号连击
+    pattern: '——[^—\n]{0,40}——'
+words:
+  - id: grandiose
+    desc: 宏大空话（蓝军14）
+    terms: [见证了, 标志着, 彰显, 凸显, 深深植根于, 不可磨灭, 奠定了基础,
+            开启了新篇章, 里程碑意义, 关键转折点, 不断演变的格局, 重要的一环]
+  - id: vague_attribution
+    desc: 模糊归因
+    terms: [业内人士认为, 有观点认为, 普遍认为, 众所周知, 不少人表示, 有分析指出]

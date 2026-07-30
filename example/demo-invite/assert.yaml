@@ -1,0 +1,10 @@
+page: page.html
+genre: invite
+facts: facts.json
+quotes: quotes.json
+corpus:
+  - absorb/**/*.md
+  - absorb/**/*.txt
+link_check: skip
+asset_hosts: []
+link_hosts: [example.com]

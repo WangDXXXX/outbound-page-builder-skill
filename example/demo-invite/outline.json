@@ -1,0 +1,225 @@
+{
+  "genre": "invite",
+  "title": "云顶书房 · 六月对谈｜邀请函",
+  "og": {
+    "title": "从 320 人到 40 人，这一次坐得下同行",
+    "description": "6 月 6 日 · 周六 · 云顶书房。40 席，定向邀请。"
+  },
+  "slots": [
+    {
+      "key": "hero",
+      "components": [
+        {
+          "name": "sysbar",
+          "data": {
+            "text": "2026.06.06 周六 · 云顶书房 · 40 席 · 定向邀请"
+          }
+        },
+        {
+          "name": "atm-layer",
+          "data": {}
+        },
+        {
+          "name": "section-head",
+          "data": {
+            "eyebrow": "六月对谈",
+            "title": "320 人到 40 人"
+          }
+        },
+        {
+          "name": "info-meta",
+          "data": {
+            "items": [
+              {
+                "k": "日期",
+                "v": "6 月 6 日（周六）"
+              },
+              {
+                "k": "时间",
+                "v": "14:00–18:00"
+              },
+              {
+                "k": "地点",
+                "v": "云顶书房"
+              },
+              {
+                "k": "席位",
+                "v": "40 席"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "why_you",
+      "components": [
+        {
+          "name": "keynote-block",
+          "data": {
+            "paras": [
+              "上一场我们放进来 320 个人，报名九百多。散场时有人说，最有价值的半小时发生在门口。",
+              "所以这次只发 40 张邀请。三组对谈，每组 45 分钟，中间不设茶歇——累了自己上露台，那里也能接着聊。",
+              "第三组是闭门段：不录像、不整理、不外发。它是整个下午唯一无法转述的部分，也是我们把人数压到 40 的真正原因。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "agenda",
+      "components": [
+        {
+          "name": "agenda-rows",
+          "data": {
+            "rows": [
+              {
+                "time": "14:00–14:30",
+                "name": "入场",
+                "desc": "领编号，挑座位，不安排座次。"
+              },
+              {
+                "time": "14:30–15:15",
+                "name": "对谈一 · 产线上的账",
+                "desc": "工业质检，一条产线一年省下多少，怎么算。"
+              },
+              {
+                "time": "15:15–16:00",
+                "name": "对谈二 · 跨境的水位",
+                "desc": "跨境电商，退货率、汇率、平台规则三头挤压下怎么过日子。"
+              },
+              {
+                "time": "16:00–17:15",
+                "name": "对谈三 · 闭门",
+                "desc": "不录像，不整理。手机扣在桌上。"
+              },
+              {
+                "time": "17:15–18:00",
+                "name": "门口那半小时",
+                "desc": "上一场自发形成的环节，这次写进议程。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "value",
+      "components": [
+        {
+          "name": "talk-card",
+          "data": {
+            "index": "01",
+            "title": "一条产线省下多少，摊开算",
+            "hook": "不谈概念，直接把成本表放出来：改造前后每万件的质检人力、误判率、返工成本，逐项对账。",
+            "people": [
+              {
+                "name": "嘉宾 A",
+                "role": "工业质检方案负责人"
+              }
+            ]
+          }
+        },
+        {
+          "name": "talk-card",
+          "data": {
+            "index": "02",
+            "title": "三头挤压下怎么过日子",
+            "hook": "一个做了六年跨境的团队，把去年最难的三个季度拆开讲：哪些动作有效，哪些是白花钱。",
+            "people": [
+              {
+                "name": "嘉宾 B",
+                "role": "跨境电商创始人"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "people",
+      "components": [
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "三百人是听众，四十人才是同行。",
+            "speaker": "老周",
+            "link": ""
+          }
+        }
+      ]
+    },
+    {
+      "key": "proof",
+      "components": [
+        {
+          "name": "stat-caption",
+          "data": {
+            "value": "58",
+            "label": "份回访问卷",
+            "caption": "上一场结束后收回，其中 71% 反馈「内容密度够但没时间深聊」"
+          }
+        },
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "上一场最有价值的是散场后在门口聊的那半小时",
+            "speaker": "参与者反馈",
+            "link": ""
+          }
+        }
+      ]
+    },
+    {
+      "key": "terms",
+      "components": [
+        {
+          "name": "terms-list",
+          "data": {
+            "items": [
+              {
+                "index": "01",
+                "text": "<b>第三组对谈不录像、不整理、不外发。</b>你听到的东西，只有屋里这 40 个人听到。"
+              },
+              {
+                "index": "02",
+                "text": "<b>席位只有 40 个，谢绝携带同伴。</b>但欢迎你推荐一位坐进来。"
+              },
+              {
+                "index": "03",
+                "text": "<b>不设茶歇。</b>露台一直开着，想歇随时去，那里说话反而更方便。"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "cta",
+      "components": [
+        {
+          "name": "cta-pills",
+          "data": {
+            "title": "位置给你留着，回一个字就行。",
+            "text": "直接回复邀请你的那个人即可。",
+            "buttons": [
+              {
+                "label": "确认出席",
+                "href": "https://example.com/rsvp",
+                "variant": "primary"
+              }
+            ]
+          },
+          "longpic": {
+            "name": "qr-closure",
+            "data": {
+              "qr": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAACCUlEQVR4nO1bQW6DQAwcLyvlCD/oU+BreVJ/wD4lP4BjJZAr22xCe6KV2ljBPiSwmYPl2THG3hDjoJV0FAkENEWwENvlsKWAIoJ12FJAIUabZdAwEwFzBjDX5SGC5Wq79Cw26XXDNLQLaECjq+zM1yOWXhs63yXULuAribZMdNmdr+eF5m/3XAhgtNN/OZACil+zRfY15yXi6ndntcw8irbGdgH6Ki1mXtz5irNrq5imGlB/uzD173q70t87kAKKH7LF93suHQjl7YNEbxFXXzsLVqP3j4RXC3rNjpYTtb4fn+5rOj0UG1vTdsWjcGQmTzCx7Yd0+mClZ0cAlaMF9e24lhrGlgos2HLFFpu2pBw0qTW1RBRMsOWKLWgHg6emXilvNTsGW+46TxkobxtlRJ2stcw0YCUTGNz4el4oHtqqpr1c1ZZITSwyobMe/LR/gtEwX5ivncqqUgYvvp4Yin0FLx+W9e5l/K60T8/2NZ0emo0ya2e0DOp5zaxd3X68N3kjWD5nxyidTCN1VQfIVmo48jWg2M+OV+Kr9Qm/Tk1SBAtO5ltzB1jnfc7SiBeV1TTITnxNAcV30wLDqgxtaKxxisbtdmG+EaFo8S5HaeJchufZMYq0MWxOMq30mCLDj6/nhWJ/Bk3ehHfdQW3tRg/eEVsU/1rAkylIAUUE67ClgCKCddheNFifg9Q9dIcbNvgAAAAASUVORK5CYII=",
+              "alt": "确认出席二维码",
+              "lines": "6 月 6 日（周六）14:00–18:00<br>云顶书房 · 星海路 8 号二层<br>长按识别，确认出席"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

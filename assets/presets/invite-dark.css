@@ -1,0 +1,25 @@
+/* invite-dark：邀请函向兜底设计系统。
+   色彩关系参照近黑画布 + 暖锈色强调色 + 亮色反转段（近似 Ciridae 的关系），
+   但只用 19 个统一令牌名——组件层看不出这套值来自哪个具体设计系统。
+   直接当 theme/tokens.css 用：没有真实设计系统输入时，把这个文件复制过去即可跑。 */
+:root {
+  --bg: #0b0b0b;
+  --bg-2: #272a2a;
+  --bg-sunken: #050505;
+  --fg: #ffffff;
+  --fg-2: #edebe7;
+  --fg-3: #484848;
+  --hair: rgba(255,255,255,.12);
+  --accent: #cc6437;
+  --accent-2: var(--accent);
+  --invert-bg: #edebe7;
+  --invert-fg: #050505;
+  --font-cn: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --font-mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --radius-s: 1px;
+  --radius-m: 4px;
+  --radius-l: 10px;
+  --pad: 20px;
+  --gap: 56px;
+  --maxw: 1240px;
+}
