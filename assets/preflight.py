@@ -6,6 +6,7 @@ class Cap(NamedTuple):
     name: str; kind: str; ok: bool; detail: str; fallback: str; install: str
 
 SKILLS_DIR = pathlib.Path.home() / ".claude" / "skills"
+VENDOR_DIR = pathlib.Path(__file__).resolve().parent.parent / "vendor"
 
 # 能力名到显示层级的映射（独立于 kind 的关键性）
 _LAYER = {
@@ -30,6 +31,12 @@ def _skill(name):
     p = SKILLS_DIR / name
     return p.exists() and (p / "SKILL.md").exists()
 
+def _vendor_install(name, absent_hint):
+    # vendor 目录可能因授权原因未随仓分发；提示只指向真实存在的路径
+    if (VENDOR_DIR / name / "SKILL.md").exists():
+        return f"从 vendor/{name} 复制并软链"
+    return absent_hint
+
 def probe():
     py_ok = sys.version_info >= (3, 10)
     return [
@@ -40,10 +47,13 @@ def probe():
         Cap("PyYAML", "hard", _mod("yaml"), "", "", "pip install pyyaml"),
         Cap("opencv", "soft", _mod("cv2"), "", "二维码改人工扫码确认", "pip install opencv-python"),
         Cap("humanizer-zh", "soft", _skill("humanizer-zh"), "",
-            "用内置 references/copy-layer.md 的 AI 味词表", "从 vendor/humanizer-zh 复制并软链"),
+            "用内置 references/copy-layer.md 的 AI 味词表",
+            _vendor_install("humanizer-zh",
+                "无公开分发源；内置 references/copy-layer.md 的 AI 味词表已覆盖，无需安装")),
         Cap("wu-mengzhi-variety-copy", "soft", _skill("wu-mengzhi-variety-copy"), "",
             "用内置三层法，标题候选少一套产出路径",
-            "从 vendor/wu-mengzhi-variety-copy 复制并软链"),
+            _vendor_install("wu-mengzhi-variety-copy",
+                "无公开分发源（未获授权随仓分发）；内置 references/copy-layer.md 已蒸馏其三招，无需安装")),
         Cap("lark-cli", "adapter", bool(shutil.which("lark-cli")), "",
             "请把碎片文件手动放进 absorb/",
             "npm i -g @larksuite/cli && lark-cli auth login"),

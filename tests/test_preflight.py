@@ -56,6 +56,19 @@ class TestPreflight(unittest.TestCase):
         # 正常的能力不应该在缺失清单中
         self.assertNotIn("pip install playwright", out)
 
+    def test_install_hints_only_point_to_existing_vendor_dirs(self):
+        """回归：安装提示若指向 vendor/ 路径，该目录必须真实随仓分发。
+
+        公开仓库因授权原因不含 vendor/wu-mengzhi-variety-copy，
+        提示指向不存在的目录会让新用户照着撞墙。
+        """
+        for c in preflight.probe():
+            if "vendor/" in c.install:
+                name = c.install.split("vendor/")[1].split(" ")[0].rstrip("，。；")
+                self.assertTrue(
+                    (preflight.VENDOR_DIR / name / "SKILL.md").exists(),
+                    f"{c.name} 的安装提示指向不存在的 vendor 目录：vendor/{name}")
+
     def test_render_handles_unknown_cap_name(self):
         """render() 应该优雅处理未知的能力名"""
         caps = [
