@@ -1,5 +1,5 @@
 """能力检测：任何产出动作之前先跑，把清单贴给用户。降级永不静默。"""
-import importlib.util, shutil, sys, pathlib, unicodedata
+import importlib.util, shutil, sys, pathlib, unicodedata, json
 from typing import NamedTuple
 
 class Cap(NamedTuple):
@@ -31,6 +31,27 @@ def _skill(name):
     p = SKILLS_DIR / name
     return p.exists() and (p / "SKILL.md").exists()
 
+def _cli_authed(cli, token_ok):
+    """两级探测，只查 PATH 和本地文件，零网络请求。
+    token_ok 是无参可调用，返回登录态文件是否有效。"""
+    if not shutil.which(cli):
+        return False, "未安装"
+    if not token_ok():
+        return False, "已安装，未登录"
+    return True, ""
+
+def _lark_authed():
+    """lark-cli auth login 成功后 ~/.lark-cli/config.json 含非空 apps。"""
+    p = pathlib.Path.home() / ".lark-cli" / "config.json"
+    try:
+        return bool(json.loads(p.read_text(encoding="utf-8")).get("apps"))
+    except (OSError, ValueError, AttributeError):
+        return False
+
+def _magic_authed():
+    """magic-builder auth login/set 成功后落 ~/.magic-builder/magic-token。"""
+    return (pathlib.Path.home() / ".magic-builder" / "magic-token").exists()
+
 def _vendor_install(name, absent_hint):
     # vendor 目录可能因授权原因未随仓分发；提示只指向真实存在的路径
     if (VENDOR_DIR / name / "SKILL.md").exists():
@@ -39,6 +60,8 @@ def _vendor_install(name, absent_hint):
 
 def probe():
     py_ok = sys.version_info >= (3, 10)
+    lark_ok, lark_detail = _cli_authed("lark-cli", _lark_authed)
+    magic_ok, magic_detail = _cli_authed("magic-builder", _magic_authed)
     return [
         Cap("python3", "hard", py_ok, sys.version.split()[0], "", "brew install python@3.14"),
         Cap("playwright", "hard", _mod("playwright"), "", "",
@@ -54,11 +77,11 @@ def probe():
             "用内置三层法，标题候选少一套产出路径",
             _vendor_install("wu-mengzhi-variety-copy",
                 "无公开分发源（未获授权随仓分发）；内置 references/copy-layer.md 已蒸馏其三招，无需安装")),
-        Cap("lark-cli", "adapter", bool(shutil.which("lark-cli")), "",
-            "请把碎片文件手动放进 absorb/",
-            "npm i -g @larksuite/cli && lark-cli auth login"),
-        Cap("magic-builder", "adapter", bool(shutil.which("magic-builder")), "",
-            "交付单文件 HTML，你自行发布", "npm i -g magic-builder"),
+        Cap("lark-cli", "adapter", lark_ok, lark_detail,
+            "请把飞书文档导出 Markdown、多维表格导出 CSV，手动放进 absorb/",
+            "npm i -g @larksuite/cli && lark-cli auth login --domain docs,drive"),
+        Cap("magic-builder", "adapter", magic_ok, magic_detail,
+            "交付单文件 HTML，你自行发布", "npm i -g magic-builder && magic-builder auth login"),
     ]
 
 def degradations(caps):
@@ -87,7 +110,11 @@ def render(caps):
     for c in caps:
         layer = _LAYER.get(c.name, "其他")
         mark = "✓" if c.ok else "✗"
-        tail = f" → {c.fallback}" if not c.ok and c.fallback else ""
+        tail = ""
+        if not c.ok:
+            parts = [p for p in (c.detail, c.fallback) if p]
+            if parts:
+                tail = " → " + "；".join(parts)
         # 使用显示宽度感知的填充
         layer_part = _pad_to_width(layer, 6)
         name_part = _pad_to_width(c.name, 24)

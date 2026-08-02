@@ -1,16 +1,17 @@
 ---
 name: outbound-page-builder
 description: |
-  把碎片信息（复盘文档、执行会逐字稿、群聊记录、讲者 Base、往届数据、图片）产出为对外移动端
-  网页与微信长图。触发场景：做战报网页、做邀请函网页、做对外页面、转微信长图、把碎片信息做成
-  对外页。当用户说"做一份战报""写一个邀请函网页""这些素材做成对外页""转成长图发朋友圈/微信"
-  时使用。不适用于：交互式应用页（抽奖页/揭晓页/带状态的沙盘类页面，这些是应用不是内容页）、
-  微信公众号图文排版（长图是独立媒介，不是公众号文章排版）。
+  把你飞书里的复盘（活动复盘文档、campaign 数据多维表格）产出为对外战报网页 +
+  微信长图，并发布成公开链接。触发场景：做战报、活动复盘做成对外页、campaign
+  复盘出战报、投放战役总结对外发布、转微信长图。当用户说"把这份复盘做成战报"
+  "campaign 打完了出个对外战报""这些素材做成对外页发出去"时使用。也可做活动
+  邀请函网页（invite 骨架），当用户说"写一个邀请函网页""做邀请函"时使用。
+  不适用于：交互式应用页、微信公众号图文排版。
 ---
 
 # outbound-page-builder
 
-把碎片信息变成对外网页（战报/邀请函）+ 微信长图，两者都移动端优先。本文件只放路由和硬规则，细节在 `references/` 里，读完本文件之后按下方"路由表"去看对应文档，不要跳过硬规则直接开始产出。
+把碎片信息变成对外网页（战报/邀请函）+ 微信长图，两者都移动端优先。本文件只放路由和硬规则，细节在 `references/` 里，读完本文件之后按下方"路由表"去看对应文档，不要跳过硬规则直接开始产出。碎片从哪来：读 `references/absorb-feishu.md`，两条路径（lark-cli 拉取 / 手动导出）选一条，落进 `absorb/`。
 
 ## 硬规则 0：任何产出动作之前先跑 preflight
 
@@ -24,7 +25,7 @@ python3 assets/preflight.py
 
 | 闸门 | 位置 | 人要确认什么 |
 |---|---|---|
-| 闸门一 | `outline.json` 定稿后，开始组件拼装之前 | 数字口径、槽位取舍、原声选取、标题候选；**设计系统注入的映射表**（`theme.describe()` 输出，见 `references/design-inject.md`）也在这里过，`heuristic`/`default` 来源的令牌要重点确认 |
+| 闸门一 | `outline.json` 定稿后，开始组件拼装之前 | 数字口径、槽位取舍、原声选取、标题候选；**设计系统注入的映射表**（`theme.describe()` 输出，见 `references/design-inject.md`）也在这里过，`heuristic`/`default` 来源的令牌要重点确认；**公开性逐条确认**——台账里将出现在页面上的每个数字、人名、原声，逐条问用户"这条可以公开吗"；用户没点头的条目不进 outline。这个页面发出去是公开链接，这道确认替用户挡隐私事故。 |
 | 闸门二 | 交付前 | 三视口截图 + 长图过目；`verify.py` 六层结果；`REPORT.md` 的降级声明 |
 
 两道闸门都不能跳过。程序断言能拦住的是"引用是不是编的、数字有没有 caption、黑话有没有漏网"，拦不住的是"这个映射对不对、这张图看着顺不顺"，这部分必须有人看过。
@@ -34,10 +35,11 @@ python3 assets/preflight.py
 | 碎片描述的是什么 | 骨架 | 详细文档 |
 |---|---|---|
 | 已经发生的活动，讲复盘/讲者/数据 | 战报（recap，11 槽位） | `references/skeleton-recap.md` |
+| 一段时间的投放/营销战役，讲打法/触达/ROI | campaign（8 槽位） | `references/skeleton-campaign.md` |
 | 邀请读者来参加，讲议程/门槛/报名 | 邀请函（invite，9 槽位） | `references/skeleton-invite.md` |
 | 二者都不是 | 通用页（generic，4 槽位） | `references/skeleton-generic.md` |
 
-三套骨架的槽位顺序写死在 `assets/opb/skeleton.py`，`outline.json` 不能自己重排。
+四套骨架的槽位顺序写死在 `assets/opb/skeleton.py`，`outline.json` 不能自己重排。
 
 ## 文案层裁剪
 
@@ -90,7 +92,7 @@ build('outline.json', 'theme', mode='longpic', out='longpic.html')
 
 | 要做什么 | 读哪份文档 |
 |---|---|
-| 填战报/邀请函/通用页的槽位，不知道该用哪个组件 | `references/skeleton-recap.md` / `skeleton-invite.md` / `skeleton-generic.md` |
+| 填战报/邀请函/campaign/通用页的槽位，不知道该用哪个组件 | `references/skeleton-recap.md` / `skeleton-invite.md` / `skeleton-campaign.md` / `skeleton-generic.md` |
 | 写文案、判断标题/反差合不合格 | `references/copy-layer.md` |
 | 接入四件套/风格描述/前作设计系统 | `references/design-inject.md` |
 | 出长图、处理断行/孤字行/溢出报错 | `references/longpic.md` |

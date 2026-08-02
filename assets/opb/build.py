@@ -186,4 +186,5 @@ def build(outline_path: str, theme_dir: str, mode: str = "web", out: str | None 
 """
     if out:
         pathlib.Path(out).write_text(html, encoding="utf-8")
+        return out
     return html

@@ -39,6 +39,14 @@ class TestConfig(unittest.TestCase):
         self.assertTrue(c.copy["ban_contrast_pair"])
         self.assertEqual(c.blacklist["exempt_zones"], ["「」"])
 
+    def test_campaign_genre_accepted(self):
+        """genre: campaign 必须被接受——campaign 是 build/skeleton.py 里已注册的
+        体裁（SKILL.md 体裁路由表已经在文档层承诺了这条路径），verify 层的
+        GENRES 若不同步收录，外部用户照着文档给 campaign 复盘跑 verify 会
+        在这里直接 ConfigError 撞墙，例子见 example/demo-campaign。"""
+        c = C.load_config(_w(YAML.replace("genre: invite", "genre: campaign")))
+        self.assertEqual(c.genre, "campaign")
+
     def test_unknown_genre_raises(self):
         with self.assertRaises(C.ConfigError):
             C.load_config(_w(YAML.replace("genre: invite", "genre: poster")))

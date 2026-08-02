@@ -1,0 +1,86 @@
+{
+  "kiosk_count": {
+    "value": 156,
+    "display": "156",
+    "caption": "三城地铁合计落地的换书角点位数",
+    "source": "absorb/复盘.md 第 8 行",
+    "public": true,
+    "verified": true
+  },
+  "goal_signup": {
+    "value": 43700,
+    "display": "43700",
+    "caption": "两月新增登记用户目标数",
+    "source": "absorb/复盘.md 第 22 行",
+    "public": true,
+    "verified": true
+  },
+  "actual_signup": {
+    "value": 61800,
+    "display": "61800",
+    "caption": "两月实际新增登记用户数",
+    "source": "absorb/原声.txt 04-28 09:00",
+    "compare_to": {
+      "value": 43700,
+      "label": "目标"
+    },
+    "public": true,
+    "verified": true
+  },
+  "goal_cpa": {
+    "value": 6.8,
+    "display": "6.8",
+    "caption": "两月人均获客成本目标（元）",
+    "source": "absorb/复盘.md 第 23 行",
+    "public": true,
+    "verified": true
+  },
+  "actual_cpa": {
+    "value": 4.9,
+    "display": "4.9",
+    "caption": "两月实际人均获客成本（元）",
+    "source": "absorb/原声.txt 04-10 09:20",
+    "public": true,
+    "verified": true
+  },
+  "video_views": {
+    "value": 2183600,
+    "display": "2183600",
+    "caption": "短视频+达人矩阵累计播放量",
+    "source": "absorb/原声.txt 04-28 09:02",
+    "public": true,
+    "verified": true
+  },
+  "influencer_count": {
+    "value": 28,
+    "display": "28",
+    "caption": "参与内容共创的达人数",
+    "source": "absorb/复盘.md 第 15 行",
+    "public": true,
+    "verified": true
+  },
+  "xhs_engagement_actual": {
+    "value": 0.8,
+    "display": "0.8",
+    "caption": "小红书笔记互动率实际值（%）",
+    "source": "absorb/原声.txt 04-15 11:00",
+    "public": true,
+    "verified": true
+  },
+  "xhs_engagement_target": {
+    "value": 2,
+    "display": "2",
+    "caption": "小红书笔记互动率目标线（%）",
+    "source": "absorb/复盘.md 第 27 行",
+    "public": true,
+    "verified": true
+  },
+  "budget_total": {
+    "value": 186400,
+    "display": "186400",
+    "caption": "两月总预算（对外不披露具体金额）",
+    "source": "absorb/复盘.md 第 33 行",
+    "public": false,
+    "verified": true
+  }
+}

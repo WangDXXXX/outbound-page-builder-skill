@@ -1,0 +1,30 @@
+[
+  {
+    "id": "q_wait",
+    "text": "换乘时顺手放下一本，等车的六分钟正好翻完一页",
+    "speaker": "李样本",
+    "source_file": "absorb/原声.txt",
+    "why_picked": "带具体时间尺度（六分钟）的真实使用场景，说明产品怎么嵌进通勤动线"
+  },
+  {
+    "id": "q_habit",
+    "text": "我现在出门会特意挑一本厚度刚好卡在两站路程的书",
+    "speaker": "陈样例",
+    "source_file": "absorb/原声.txt",
+    "why_picked": "说明用户已经把这件事变成习惯，不是一次性尝鲜"
+  },
+  {
+    "id": "q_partner",
+    "text": "我们书店这边捐出去的旧书，扫码记录显示三周内被换了四轮",
+    "speaker": "林示范",
+    "source_file": "absorb/原声.txt",
+    "why_picked": "合作书店主理人视角，扫码记录是可验证的产品机制，不是空口称赞"
+  },
+  {
+    "id": "q_content",
+    "text": "拍地铁书屋最难的是耐心等一个真实换书的瞬间，摆拍一眼能看出来",
+    "speaker": "周计划",
+    "source_file": "absorb/原声.txt",
+    "why_picked": "达人视角说明内容真实性要求，呼应打法里强调的真实场景拍摄"
+  }
+]

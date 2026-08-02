@@ -1,4 +1,5 @@
-import sys, unittest, pathlib
+import sys, unittest, pathlib, shutil
+from unittest.mock import patch
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "assets"))
 import preflight
 
@@ -78,6 +79,50 @@ class TestPreflight(unittest.TestCase):
         # 应该不报错，并显示为"其他"层级
         self.assertIn("其他", out)
         self.assertIn("unknown-capability", out)
+
+class TestCliAuthProbe(unittest.TestCase):
+    """两级探测：CLI 不在 → (False, "未安装")；在但没登录 →
+    (False, "已安装，未登录")；都好 → (True, "")。
+    探测必须离线（只查文件，不发网络请求）——preflight 是每次产出前必跑，
+    不能等网络超时。"""
+
+    def test_cli_missing(self):
+        ok, detail = preflight._cli_authed("no-such-cli-xyz", lambda: True)
+        self.assertFalse(ok)
+        self.assertEqual(detail, "未安装")
+
+    def test_cli_present_but_not_authed(self):
+        # python3 一定在 PATH 里，拿它冒充"装了但没登录"的 CLI
+        ok, detail = preflight._cli_authed("python3", lambda: False)
+        self.assertFalse(ok)
+        self.assertEqual(detail, "已安装，未登录")
+
+    def test_cli_present_and_authed(self):
+        ok, detail = preflight._cli_authed("python3", lambda: True)
+        self.assertTrue(ok)
+        self.assertEqual(detail, "")
+
+    def test_probe_lark_and_magic_use_two_stage(self):
+        by_name = {c.name: c for c in preflight.probe()}
+        for name in ("lark-cli", "magic-builder"):
+            c = by_name[name]
+            # 未登录时 detail 必须点名（守卫：不许静默把"没登录"当"没装"）
+            if not c.ok and shutil.which(name):
+                self.assertEqual(c.detail, "已安装，未登录", name)
+
+    def test_lark_cli_install_contains_domain_flag(self):
+        """lark-cli auth login 必须带 --domain docs,drive，否则新用户照裸命令敲会报错"""
+        by_name = {c.name: c for c in preflight.probe()}
+        lark_cap = by_name["lark-cli"]
+        self.assertIn("--domain", lark_cap.install,
+                     "lark-cli install 缺 --domain 参数，新用户会撞墙")
+
+    def test_lark_authed_handles_non_dict_json(self):
+        """~/.lark-cli/config.json 若不是 JSON 对象（例如被写坏成一个数组），
+        .get("apps") 会抛 AttributeError——_lark_authed 必须吞掉它返回 False，
+        不能让 preflight 在这种损坏配置上直接崩溃。"""
+        with patch("pathlib.Path.read_text", return_value="[]"):
+            self.assertFalse(preflight._lark_authed())
 
 if __name__ == "__main__":
     unittest.main()

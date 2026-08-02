@@ -16,9 +16,15 @@ class TestDocs(unittest.TestCase):
 
     def test_all_reference_files_exist(self):
         for f in ("skeleton-recap.md", "skeleton-invite.md", "skeleton-generic.md",
+                  "skeleton-campaign.md", "absorb-feishu.md",
                   "copy-layer.md", "design-inject.md", "longpic.md",
                   "verify.md", "publish.md"):
             self.assertTrue((REFS / f).exists(), f"缺 references/{f}")
+
+    def test_publish_doc_covers_install_and_login(self):
+        t = (REFS / "publish.md").read_text(encoding="utf-8")
+        self.assertIn("npm i -g magic-builder", t)
+        self.assertIn("auth login", t)
 
     def test_skill_md_states_preflight_first(self):
         t = (ROOT / "SKILL.md").read_text(encoding="utf-8")
@@ -29,6 +35,16 @@ class TestDocs(unittest.TestCase):
         t = (ROOT / "SKILL.md").read_text(encoding="utf-8")
         self.assertIn("--id", t)
         self.assertIn("拒绝执行", t)
+
+    def test_skill_md_routes_campaign_and_input_layer(self):
+        t = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("skeleton-campaign.md", t)
+        self.assertIn("absorb-feishu.md", t)
+
+    def test_skill_md_gate_one_confirms_publicness(self):
+        t = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("公开", t)
+        self.assertRegex(t, r"闸门一.*公开|公开.*闸门一")
 
     def test_copy_layer_bans_contrast_pair_explicitly(self):
         t = (REFS / "copy-layer.md").read_text(encoding="utf-8")
@@ -48,7 +64,8 @@ class TestDocs(unittest.TestCase):
     def test_skeleton_docs_list_every_slot(self):
         for genre, fname in (("recap", "skeleton-recap.md"),
                              ("invite", "skeleton-invite.md"),
-                             ("generic", "skeleton-generic.md")):
+                             ("generic", "skeleton-generic.md"),
+                             ("campaign", "skeleton-campaign.md")):
             t = (REFS / fname).read_text(encoding="utf-8")
             for s in SKELETONS[genre]:
                 self.assertIn(s.key, t, f"{fname} 未记载槽位 {s.key}")
@@ -83,7 +100,7 @@ class TestDocs(unittest.TestCase):
     def test_every_registered_component_documented(self):
         docs = "".join((REFS / f).read_text(encoding="utf-8")
                        for f in ("skeleton-recap.md", "skeleton-invite.md",
-                                 "skeleton-generic.md"))
+                                 "skeleton-generic.md", "skeleton-campaign.md"))
         for name in B.all_components():
             self.assertIn(name, docs, f"组件 {name} 未在任何骨架文档中记载")
 
@@ -112,7 +129,7 @@ class TestDocs(unittest.TestCase):
 
     def test_skeleton_docs_have_decision_tables(self):
         """决策点必须收敛成「情况 → 做什么」的表，不留开放式判断。"""
-        for f in ("skeleton-recap.md", "skeleton-invite.md"):
+        for f in ("skeleton-recap.md", "skeleton-invite.md", "skeleton-campaign.md"):
             t = (REFS / f).read_text(encoding="utf-8")
             self.assertRegex(t, r"\|.*\|.*\|", f"{f} 没有表格，决策点未收敛")
 
@@ -124,6 +141,20 @@ class TestDocs(unittest.TestCase):
             for block in _re.findall(r"```bash\n(.*?)```", t, _re.S):
                 bad = _re.findall(r"<[a-zA-Z_][\w\-]*>", block)
                 self.assertEqual(bad, [], f"{f.name} 命令块含未展开占位 {bad}")
+
+    def test_agents_md_exists_and_points_to_skill_md(self):
+        p = ROOT / "AGENTS.md"
+        self.assertTrue(p.exists(), "缺 AGENTS.md（多 Agent 通用入口）")
+        t = p.read_text(encoding="utf-8")
+        self.assertIn("SKILL.md", t)
+        self.assertIn("preflight", t)
+
+    def test_readme_mentions_demo_campaign(self):
+        """campaign 骨架已经上线，README 的样例入口和目录树不能只提 demo-recap，
+        否则外部用户读完 README 找不到 campaign 的可跑样例。"""
+        t = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("demo-campaign", t)
+        self.assertIn("campaign", t)
 
 
 if __name__ == "__main__":

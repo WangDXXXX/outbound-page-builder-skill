@@ -1,0 +1,94 @@
+{
+  "turnout": {
+    "value": 137,
+    "display": "137",
+    "caption": "到场咖啡师人数，覆盖 42 家门店",
+    "source": "absorb/复盘.md 第 9 行",
+    "compare_to": {
+      "value": 89,
+      "label": "上一场"
+    },
+    "public": true,
+    "verified": true
+  },
+  "registration": {
+    "value": 203,
+    "display": "203",
+    "caption": "提前报名人数",
+    "source": "absorb/复盘.md 第 9 行",
+    "public": true,
+    "verified": true
+  },
+  "prev_turnout": {
+    "value": 89,
+    "display": "89",
+    "caption": "上一场到场人数（报名同为 89）",
+    "source": "absorb/复盘.md 第 9 行",
+    "public": true,
+    "verified": true
+  },
+  "shops": {
+    "value": 42,
+    "display": "42",
+    "caption": "到场咖啡师覆盖的门店数",
+    "source": "absorb/复盘.md 第 12 行",
+    "public": true,
+    "verified": true
+  },
+  "cupping_rounds": {
+    "value": 3,
+    "display": "3",
+    "caption": "当晚盲测轮次，每轮 5 支豆子",
+    "source": "absorb/复盘.md 第 15 行",
+    "public": true,
+    "verified": true
+  },
+  "cancelled_sessions": {
+    "value": 0,
+    "display": "0",
+    "caption": "临时取消的环节数——原定四张吧台全部按时开桌",
+    "source": "absorb/原声.txt 05-31 09:12",
+    "public": true,
+    "verified": true
+  },
+  "survey_n": {
+    "value": 64,
+    "display": "64",
+    "caption": "活动后回收的问卷份数",
+    "source": "absorb/复盘.md 第 20 行",
+    "public": true,
+    "verified": true
+  },
+  "satisfied_pct": {
+    "value": 92.5,
+    "display": "92.5",
+    "caption": "问卷里回答愿意再来或愿意推荐同行的合并占比（%）",
+    "source": "absorb/原声.txt 09-56",
+    "public": true,
+    "verified": true
+  },
+  "want_more_time_pct": {
+    "value": 46.5,
+    "display": "46.5",
+    "caption": "问卷里反馈交流时间不够的占比（%）",
+    "source": "absorb/原声.txt 09-58",
+    "public": true,
+    "verified": true
+  },
+  "ugc_posts": {
+    "value": 76,
+    "display": "76",
+    "caption": "活动结束后各自账号自发发布的分享帖数（不含转发）",
+    "source": "absorb/原声.txt 10-05",
+    "public": true,
+    "verified": true
+  },
+  "sample_bags": {
+    "value": 158,
+    "display": "158",
+    "caption": "试饮豆包备货份数（内部备货信息，不上页）",
+    "source": "absorb/原声.txt 10-22",
+    "public": false,
+    "verified": true
+  }
+}

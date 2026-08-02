@@ -2,7 +2,7 @@
 
 把碎片信息做成**对外移动端网页**和**微信长图**的 Claude Code Skill。
 
-会议纪要、群聊记录、逐字稿、问卷、往届数据 —— 这些东西散在十几个文件里。这个 Skill 把它们收敛成一份带出处的事实台账，填进两套已验证的信息骨架（战报 / 邀请函），产出一个自包含的单文件 HTML 和一张可直接发微信的长图，中间过六层程序断言。
+会议纪要、群聊记录、逐字稿、问卷、往届数据 —— 这些东西散在十几个文件里。这个 Skill 把它们收敛成一份带出处的事实台账，填进三套已验证的信息骨架（战报 / 邀请函 / campaign），产出一个自包含的单文件 HTML 和一张可直接发微信的长图，中间过六层程序断言。
 
 不是模板填空。**质量靠断言承载，不靠模型的判断力** —— 这是它能在弱模型上跑出可交付结果的原因。
 
@@ -30,6 +30,8 @@
 
 ### 安装
 
+#### Claude Code
+
 ```bash
 git clone https://github.com/WangDXXXX/outbound-page-builder-skill.git \
   ~/.claude/skills/outbound-page-builder
@@ -38,7 +40,12 @@ pip install -r ~/.claude/skills/outbound-page-builder/requirements.txt
 playwright install chromium
 ```
 
-Claude Code 下次启动就会看到这个 Skill。**其他 agent 环境**（Codex / OpenCode / 任何能读文件的 agent）：把仓库 clone 到任意位置，让 agent 读 `SKILL.md` 即可，它是完全自包含的路由文档。
+Claude Code 下次启动就会看到这个 Skill。
+
+#### 其他 Agent（Codex / Cursor / 任意）
+
+clone 到任意目录，让你的 Agent 读仓库根的 `AGENTS.md` 照做即可——
+skill 的全部逻辑是纯 Python + Markdown，不依赖特定 Agent 框架。
 
 ### 第一步永远是 preflight
 
@@ -50,15 +57,15 @@ python3 assets/preflight.py
 
 ### 跑通附带的样例
 
-`example/demo-invite/` 是一个完整的虚构活动工程，可以直接跑：
+`example/demo-recap/` 是一个完整的虚构会议战报工程，可以直接跑：
 
 ```bash
-cd example/demo-invite
+cd example/demo-recap
 python3 ../../assets/verify.py assert.yaml          # 六层断言
 python3 ../../assets/render_longpic.py longpic.html out.png   # 长图 + 排版断言
 ```
 
-预期：六层全过，长图 1290×12105，二维码解出 `https://example.com/rsvp`。
+预期：六层全过，长图宽 1290、高约 1.7 万像素（渲染高度依赖本机字体，具体数值以本机跑出来的为准），二维码解出 `https://example.com/report`。
 
 想看完整链路，从 `absorb/` 里那两份虚构碎片开始，对着 `facts.json` / `quotes.json` / `outline.json` 读一遍就明白数据是怎么流的。
 
@@ -70,7 +77,7 @@ python3 ../../assets/render_longpic.py longpic.html out.png   # 长图 + 排版�
 碎片（纪要/群聊/逐字稿/表格）
    ↓  preflight：报能力，缺什么说清降到什么程度
    ↓  抽取：facts.json（每个数字带口径与出处）+ quotes.json（每条带选取理由）
-   ↓  填骨架：战报 11 槽位 / 邀请函 9 槽位，槽位顺序即页面顺序
+   ↓  填骨架：战报 11 槽位 / 邀请函 9 槽位 / campaign 8 槽位，槽位顺序即页面顺序
 ══ 闸门一 ══  人过：数字口径 / 槽位取舍 / 原声选取 / 标题候选
    ↓  build.py → 单文件 HTML（web 与 longpic 两态共用一份 outline）
    ↓  verify.py 六层断言
@@ -99,11 +106,14 @@ python3 ../../assets/render_longpic.py longpic.html out.png   # 长图 + 排版�
 ## 目录
 
 ```
-SKILL.md              路由与硬规则（99 行，只放这些）
+SKILL.md              路由与硬规则，只放这些
+AGENTS.md             给非 Claude Code 的 Agent
 references/
   skeleton-recap.md     战报 11 槽位
   skeleton-invite.md    邀请函 9 槽位
   skeleton-generic.md   通用对外页 4 槽位
+  skeleton-campaign.md   campaign 骨架 8 槽位文档
+  absorb-feishu.md      Feishu 碎片拉取清单与工程结构
   copy-layer.md         对外文案红线 + 去 AI 腔 + 标题三层法
   design-inject.md      三形态 → 19 统一令牌 + 冲突判例
   longpic.md            长图八条转换规则 + 三项断言 + 踩坑
@@ -116,8 +126,9 @@ assets/
   shots.py              三视口截图
   opb/                  引擎：数据契约 / 配置 / 断言层 / 设计系统 / 23 组件 / build
   presets/              两套兜底设计系统（战报向暗色 / 邀请函向）
-example/demo-invite/  可直接跑的完整样例（虚构数据）
-tests/                375 项测试
+example/demo-recap/  可直接跑的完整样例（虚构数据）
+example/demo-campaign/  campaign 骨架的完整样例（虚构数据）
+tests/                全量测试套件（含真实浏览器渲染，约 50s）
 vendor/humanizer-zh/  去 AI 腔词表（MIT，归藏，译自 blader/humanizer）
 ```
 

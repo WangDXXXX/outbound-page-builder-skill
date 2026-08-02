@@ -29,7 +29,7 @@
 
 ```yaml
 page: page.html
-genre: invite                     # recap | invite | generic
+genre: invite                     # recap | invite | generic | campaign
 facts: facts.json
 quotes: quotes.json
 corpus:
@@ -59,7 +59,7 @@ copy:
   ban_contrast_pair: true
   allow:
     - text: "AI 不是玩具，是生产工具"
-      reason: 李默收官演示主线句，handoffs/2026-07-29-sh-content-and-invite.md:79，已上线 vqKzFh806Un
+      reason: 活动收官演示主线句，出处 absorb/复盘.md:12，负责人已确认使用
 
 must_contain: []
 link_hosts: []
@@ -72,7 +72,7 @@ link_check: browser
 | 字段 | 必填 | 类型 | 说明 |
 |---|---|---|---|
 | `page` | ✅ | 字符串 | 要验的 HTML 文件路径，相对 `assert.yaml` 所在目录 |
-| `genre` | ✅ | 字符串 | `recap` / `invite` / `generic` 三选一，决定体裁词表与是否要求 `staff_names` |
+| `genre` | ✅ | 字符串 | `recap` / `invite` / `generic` / `campaign` 四选一，决定体裁词表与是否要求 `staff_names`（`staff_names` 的空名单 WARN 只在 `recap` 触发，`campaign` 没有专属体裁词表文件，走 `base`+`extra`+`staff_names`） |
 | `facts` | ✅ | 字符串 | `facts.json` 路径 |
 | `quotes` | ✅ | 字符串 | `quotes.json` 路径 |
 | `corpus` | 可缺省 | 字符串列表 | glob 模式列表，每个扩展名单独一行（见上）；缺省则语料为空，第 1 层所有引用都会失败 |
@@ -145,13 +145,13 @@ link_check: browser
 
 ## `copy.allow`：给第 4 层开一条精确的豁免通道，不是放宽规则
 
-第 4 层（AI 味）的正则/词表是按"这类句式几乎总是 AI 腔"这个统计判断写的，但"几乎总是"不等于"永远"——一句话可能恰好撞上了黑名单模式，却是团队里的人认认真真写出来、并且已经签字确认要用的（真实案例：上海邀请函的收官演示主线句「AI 不是玩具，是生产工具」，出自 `handoffs/2026-07-29-sh-content-and-invite.md:79`，已经上线）。这种时候不能靠"改宽正则"解决——放宽一条正则是全局生效的，会让**所有项目、所有页面**里长得像的句子一起免检，红线名存实亡。`copy.allow` 解决的是另一件事：**精确豁免这一句话，其他任何地方的同款句式继续拦**。
+第 4 层（AI 味）的正则/词表是按"这类句式几乎总是 AI 腔"这个统计判断写的，但"几乎总是"不等于"永远"——一句话可能恰好撞上了黑名单模式，却是团队里的人认认真真写出来、并且已经签字确认要用的（例如：某场活动的收官演示主线句「AI 不是玩具，是生产工具」——团队认真写出、签字确认要用，却恰好命中黑名单模式）。这种时候不能靠"改宽正则"解决——放宽一条正则是全局生效的，会让**所有项目、所有页面**里长得像的句子一起免检，红线名存实亡。`copy.allow` 解决的是另一件事：**精确豁免这一句话，其他任何地方的同款句式继续拦**。
 
 ```yaml
 copy:
   allow:
     - text: "AI 不是玩具，是生产工具"
-      reason: 李默收官演示主线句，handoffs/2026-07-29-sh-content-and-invite.md:79，已上线 vqKzFh806Un
+      reason: 活动收官演示主线句，出处 absorb/复盘.md:12，负责人已确认使用
 ```
 
 几条硬规则：
@@ -159,7 +159,7 @@ copy:
 1. **`reason` 必填，缺失或空白直接 `ConfigError`**——和 `blacklist.unban` 同一条纪律（见上节）。没有理由的豁免是红线悄悄失效的方式。
 2. **`text` 是精确子串，不是正则，不支持模糊匹配。** 只豁免这一段字符完全一致的文本，不会连带放过意思相近、写法不同的句子——这是"豁免一句话"和"放宽一条规则"的本质区别。
 3. **只压住"命中范围完全落在这段豁免文字内部"的发现，页面别处的同款句式照样拦。** 实现上不能用"找到第一个匹配就看它是否被豁免"这种写法——如果第一个匹配恰好被豁免，用 `re.search` 式的"只找第一个"会让后面真正违规的命中被漏检。`aivoice.py` 用 `re.finditer`/全量位置扫描逐个判断，就是为了避免这个坑。
-4. **命中一条豁免时不是silently消失，是降级成 `WARN` 并带上理由**，例如 `WARN AI 味[contrast_pair_bushi_shi_no_er]（已豁免，理由：李默收官演示主线句…）: …`。多条豁免命中时还会有一条汇总——`WARN 本页有 N 处经豁免的 AI 味发现，逐条见上方`，让读报告的人一眼看到这页放过了几处、各自为什么。
+4. **命中一条豁免时不是silently消失，是降级成 `WARN` 并带上理由**，例如 `WARN AI 味[contrast_pair_bushi_shi_no_er]（已豁免，理由：活动收官演示主线句…）: …`。多条豁免命中时还会有一条汇总——`WARN 本页有 N 处经豁免的 AI 味发现，逐条见上方`，让读报告的人一眼看到这页放过了几处、各自为什么。
 5. **`allow` 条目的文字如果在页面上根本没出现（陈旧豁免），不阻断构建，但会报 `WARN` 提示清理**——设计系统、文案改版之后，一条早就不适用的豁免不该继续静静地留在 `assert.yaml` 里没人知道。
 6. **默认空列表，不写这个字段的项目行为和没有这个机制之前完全一样。**
 

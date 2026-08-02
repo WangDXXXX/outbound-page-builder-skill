@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三城地铁读书角 · 两月投放结果</title>
+<meta property="og:title" content="两个月，新增登记用户从 4.37 万涨到 6.18 万">
+<meta property="og:description" content="三城地铁 156 个换书角，两个月新增登记用户 61800，人均获客成本压到 4.9 元。">
+<style>
+:root {
+  --bg: #0d0d0f;
+  --bg-2: #1a1a1e;
+  --bg-sunken: #070708;
+  --fg: #f5f5f4;
+  --fg-2: #b8b8b6;
+  --fg-3: #6e6e6c;
+  --hair: rgba(255,255,255,.12);
+  --accent: #2f7d6b;
+  --accent-2: #6fc2ab;
+  --invert-bg: #ece9e4;
+  --invert-fg: #141414;
+  --font-cn: "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --font-mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --radius-s: 4px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+  --pad: 20px;
+  --gap: 56px;
+  --maxw: 1240px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto;display:block}
+.wrap{margin:0 auto;padding:0 var(--pad);position:relative;z-index:2}
+section{padding:var(--gap) 0;position:relative}
+.prose{font-size:15px;line-height:2;color:var(--fg-2);max-width:38em;
+  text-align:justify;text-justify:inter-ideograph;text-wrap:pretty}
+.prose+.prose{margin-top:18px}
+.prose b{font-weight:400;color:var(--fg)}
+.rule{height:1px;background:var(--hair);border:0;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-cn);
+  font-weight:400;width:430px;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  font-size:15px;line-height:1.95;letter-spacing:.01em}
+/* sysbar */
+.sysbar{background:var(--bg-sunken);border-bottom:1px solid var(--hair);
+  padding:10px 14px;text-align:center;position:relative;z-index:5}
+.sysbar span{font-family:var(--font-mono);font-size:11px;line-height:1.3;
+  letter-spacing:.04em;color:var(--fg-2)}
+/* atm-layer */
+.atm{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.atm-inner{position:absolute;inset:-15%}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;background:var(--bg-2)}
+.b1{width:80vw;height:80vw;left:-24%;top:0}
+.b2{width:66vw;height:66vw;right:-20%;top:26%}
+.b3{width:44vw;height:44vw;left:34%;bottom:-6%;opacity:.35}
+.grain{position:absolute;inset:0;z-index:1;opacity:.05;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>")}
+/* section-head */
+.sechead{margin-bottom:30px}
+.eyebrow{display:block;font-size:12px;letter-spacing:.28em;color:var(--fg-3);margin-bottom:14px}
+h2{font-size:clamp(21px,5.4vw,34px);line-height:1.45;font-weight:400;
+  letter-spacing:.01em;max-width:19em;color:var(--fg)}
+/* stat-caption */
+.stat{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;
+  align-items:baseline;padding:16px 0;border-bottom:1px solid var(--hair)}
+.stat .v{font-family:var(--font-mono);font-size:34px;line-height:1;color:var(--accent)}
+.stat .l{font-size:15px;color:var(--fg)}
+.stat .c{grid-column:2;font-size:12.5px;line-height:1.8;color:var(--fg-3)}
+.stat .cmp{grid-column:2;font-size:12px;line-height:1.6;color:var(--fg-2);margin-top:2px}
+.stat-stack{display:block}
+.stat-stack .v{display:block;margin-bottom:6px}
+.stat-stack .l{display:block;margin-bottom:4px}
+.stat-stack .c{display:block}
+.stat-stack .cmp{display:block;margin-top:4px}
+/* keynote-block */
+.keynote{margin-top:30px;padding:22px 20px;
+  border:1px solid var(--hair);background:var(--bg-sunken)}
+.keynote .prose{max-width:none;font-size:14.5px;line-height:1.95;color:var(--fg-2);
+  text-align:justify;text-justify:inter-ideograph;text-wrap:pretty}
+.keynote .prose+.prose{margin-top:14px}
+.keynote-tight{padding:16px 14px}
+@media(min-width:600px){.keynote{padding:30px 28px}}
+/* hook-grid */
+.bone{background:var(--invert-bg);padding:var(--gap) 0}
+.bone h2{font-size:clamp(21px,5.4vw,30px);line-height:1.45;font-weight:400;
+  max-width:19em;margin-bottom:22px;color:var(--invert-fg)}
+.pours{display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.12)}
+.pour{background:var(--invert-bg);padding:20px 18px}
+.pour .en{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  color:rgba(0,0,0,.45);margin-bottom:8px}
+.pour .q{font-size:17px;line-height:1.5;letter-spacing:.03em;
+  color:var(--invert-fg);margin-bottom:8px}
+.pour .n{font-size:13.5px;line-height:1.8;color:rgba(0,0,0,.6)}
+.pour.hl .q{color:var(--accent)}
+.pours-1col{grid-template-columns:1fr}
+@media(min-width:1000px){.pours{grid-template-columns:repeat(4,1fr)}}
+/* agenda-rows */
+.acts{border-top:1px solid var(--hair);margin-top:26px}
+.act{border-bottom:1px solid var(--hair);padding:20px 0;
+  display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.act .t{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;
+  color:var(--fg-2);white-space:nowrap}
+.act .n{font-size:17px;letter-spacing:.04em;grid-column:2;color:var(--fg)}
+.act .d{grid-column:2;font-size:13.5px;line-height:1.85;color:var(--fg-2);margin-top:4px}
+.act-stack{display:block;padding:22px 0}
+.act-stack .t{display:block;margin-bottom:9px;color:var(--accent)}
+.act-stack .n{display:block;font-size:20px;margin-bottom:9px}
+.act-stack .d{display:block;margin-top:0;
+  text-align:justify;text-justify:inter-ideograph;text-wrap:pretty}
+@media(min-width:600px){.act{grid-template-columns:130px 1fr;gap:6px 24px}}
+/* bar-h */
+.bh{margin-top:30px}
+.bh-rows{display:grid;gap:18px;margin-top:18px}
+.bh-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.bh-label{font-size:14.5px;color:var(--fg)}
+.bh-pct{font-family:var(--font-mono);font-size:13px;color:var(--accent)}
+.bh-track{height:8px;border-radius:var(--radius-s);background:var(--bg-2);overflow:hidden}
+.bh-fill{height:100%;border-radius:var(--radius-s);background:var(--accent)}
+.bh-note{margin-top:6px;font-size:12.5px;line-height:1.7;color:var(--fg-3)}
+/* compare-bars */
+.cb{margin-top:30px}
+.cb-body{display:flex;gap:26px;align-items:flex-start;margin-top:18px}
+.cb-legend{flex:0 0 auto;display:grid;gap:10px}
+.lg{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--fg-2)}
+.lg::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.lg-b::before{background:var(--accent-2)}
+.cb-rows{flex:1 1 auto;display:grid;gap:16px;min-width:0}
+.cb-row{display:grid;gap:6px}
+.cb-label{font-size:13.5px;color:var(--fg)}
+.cb-track{height:10px;border-radius:var(--radius-s);background:var(--bg-2);position:relative}
+.cb-bar{height:100%;border-radius:var(--radius-s);display:flex;align-items:center;min-width:2px}
+.cb-bar b{font-family:var(--font-mono);font-weight:400;font-size:11px;color:var(--fg);
+  margin-left:8px;white-space:nowrap}
+.cb-a{background:var(--accent)}
+.cb-b{background:var(--accent-2)}
+.cb-stack{display:block}
+.cb-stack .cb-body{display:block}
+.cb-stack .cb-legend{display:flex;flex-direction:row;gap:18px;margin-bottom:18px}
+/* quote-card */
+.qc{background:var(--bg-2);border:1px solid var(--hair);
+  border-radius:var(--radius-m);padding:20px 18px}
+.qc .q{font-size:15px;line-height:1.9;color:var(--fg);margin-bottom:12px;
+  text-align:justify;text-justify:inter-ideograph;text-wrap:pretty}
+.qc .s{font-size:12.5px;color:var(--fg-3);text-decoration:none}
+.qc a.s{color:var(--accent)}
+/* qr-closure */
+.qrc{text-align:center;padding:54px 0 40px}
+.qr{width:168px;margin:0 auto 18px;border-radius:var(--radius-s);background:var(--fg)}
+.qrl{font-size:14px;line-height:1.95;color:var(--fg-2);letter-spacing:.05em}
+/* footer-brand */
+footer{border-top:1px solid var(--hair);padding:30px 0 46px}
+.foot{display:grid;gap:18px;justify-items:center;text-align:center}
+.logo-fs{opacity:.85}
+.foot p{font-size:11.5px;letter-spacing:.1em;color:var(--fg-3);line-height:1.9}
+</style>
+</head>
+<body>
+<section data-slot="hero"><div class="wrap"><div class="sysbar"><span>2026.03–2026.04 · 三城地铁 · 156 个换书角</span></div><div class="atm"><div class="atm-inner"><div class="blob b1"></div><div class="blob b2"></div></div></div><div class="grain"></div><div class="sechead"><span class="eyebrow">三城地铁读书角</span><h2>两个月，登记用户涨了四成</h2></div><div class="stat stat-stack"><span class="v">156</span><span class="l">落地点位</span><span class="c">三城地铁合计换书角数量</span></div><div class="stat stat-stack"><span class="v">61800</span><span class="l">新增登记用户</span><span class="c">两月周期内完成登记的用户数</span><span class="cmp">较目标 43700</span></div><div class="stat stat-stack"><span class="v">2183600</span><span class="l">累计播放量</span><span class="c">短视频+达人矩阵合计</span></div></div></section><section data-slot="context"><div class="wrap"><div class="sechead"><span class="eyebrow">背景与目标</span><h2>通勤路上的换书场景</h2></div><div class="keynote keynote-tight"><p class="prose">三座城市的地铁系统里，换乘大站的候车时间通常在五到十分钟之间，这段时间大多数人只是刷手机等车。口袋书屋想做的是把这段空闲时间变成一次换书，扫码登记之后还能反复回来。</p><p class="prose">选地铁的理由很直接：客流本身够大、也够稳定，不需要额外导流，站点本身就是入口。两个月里三城合计落地 156 个点位，覆盖每天通过量最大的一批换乘站。</p></div><div class="stat stat-stack"><span class="v">43700</span><span class="l">目标新增登记用户</span><span class="c">两月周期内的注册目标数</span></div></div></section><section data-slot="playbook"><div class="wrap"><div class="sechead"><span class="eyebrow">打法</span><h2>渠道乘动作四件套</h2></div><section class="bone"><div class="wrap"><h2>四条渠道各自的动作</h2><div class="pours pours-1col"><div class="pour"><div class="en">短视频池</div><div class="q">官号+达人矩阵双轨出片</div><div class="n">先出素材，跑得好的信息流广告优先加投</div></div><div class="pour"><div class="en">达人矩阵</div><div class="q">28 位达人三城合拍</div><div class="n">垂类锁定通勤、读书、生活方式，内容以真实换书场景为主</div></div><div class="pour"><div class="en">站内屏</div><div class="q">换乘大站扫码两步直达</div><div class="n">把等车的空闲时间变成入口，不额外增加动作</div></div><div class="pour"><div class="en">会员唤醒</div><div class="q">还书触发一条唤醒消息</div><div class="n">带动复购式打卡，老用户占后期新增的一部分</div></div></div></div></section><div class="acts"><div class="act act-stack"><span class="t">3 月上旬</span><span class="n">站点上墙+达人合拍</span><span class="d">156 个点位完成上墙布置，达人拍摄前三条素材</span></div><div class="act act-stack"><span class="t">3 月下旬</span><span class="n">短视频进入投放高峰</span><span class="d">站内屏同步上线，扫码路径缩短到两步</span></div><div class="act act-stack"><span class="t">4 月</span><span class="n">会员唤醒机制上线</span><span class="d">预算逐步从短视频往达人矩阵倾斜</span></div></div></div></section><section data-slot="reach"><div class="wrap"><div class="stat stat-stack"><span class="v">2183600</span><span class="l">短视频+达人矩阵播放量</span><span class="c">两月累计</span></div><div class="stat stat-stack"><span class="v">28</span><span class="l">参与达人数</span><span class="c">三城合计签约的内容达人</span></div><div class="bh"><h2>触达渠道占比</h2><div class="bh-rows"><div class="bh-row"><div class="bh-top"><span class="bh-label">短视频</span><span class="bh-pct">52%</span></div><div class="bh-track"><div class="bh-fill" style="width:52%"></div></div><p class="bh-note">官号+达人矩阵合计播放占比最高的一条渠道</p></div><div class="bh-row"><div class="bh-top"><span class="bh-label">达人矩阵</span><span class="bh-pct">31%</span></div><div class="bh-track"><div class="bh-fill" style="width:31%"></div></div><p class="bh-note">内容真实性要求高，产出周期比短视频池长</p></div><div class="bh-row"><div class="bh-top"><span class="bh-label">站内屏</span><span class="bh-pct">17%</span></div><div class="bh-track"><div class="bh-fill" style="width:17%"></div></div><p class="bh-note">曝光稳定但转化路径最短，适合承接决策</p></div></div></div></div></section><section data-slot="results"><div class="wrap"><div class="sechead"><span class="eyebrow">结果</span><h2>两项都跑赢了目标</h2></div><div class="cb cb-stack"><h2>新增登记用户</h2><div class="cb-body"><div class="cb-legend"><span class="lg lg-a">目标</span><span class="lg lg-b">达成</span></div><div class="cb-rows"><div class="cb-row"><span class="cb-label">三城合计</span><div class="cb-track"><div class="cb-bar cb-a" style="width:70.7%"><b>43700</b></div></div><div class="cb-track"><div class="cb-bar cb-b" style="width:100.0%"><b>61800</b></div></div></div></div></div></div><div class="cb cb-stack"><h2>人均获客成本</h2><div class="cb-body"><div class="cb-legend"><span class="lg lg-a">目标</span><span class="lg lg-b">达成</span></div><div class="cb-rows"><div class="cb-row"><span class="cb-label">三城合计（元）</span><div class="cb-track"><div class="cb-bar cb-a" style="width:100.0%"><b>6.8</b></div></div><div class="cb-track"><div class="cb-bar cb-b" style="width:72.1%"><b>4.9</b></div></div></div></div></div></div><div class="keynote keynote-tight"><p class="prose">两项数字都按渠道实际结算后的金额计算，不是按预估价估算的。</p></div></div></section><section data-slot="voices"><div class="wrap"><div class="qc"><p class="q">「换乘时顺手放下一本，等车的六分钟正好翻完一页」</p><span class="s">李样本</span></div><div class="qc"><p class="q">「我现在出门会特意挑一本厚度刚好卡在两站路程的书」</p><span class="s">陈样例</span></div><div class="qc"><p class="q">「我们书店这边捐出去的旧书，扫码记录显示三周内被换了四轮」</p><span class="s">林示范</span></div><div class="qc"><p class="q">「拍地铁书屋最难的是耐心等一个真实换书的瞬间，摆拍一眼能看出来」</p><span class="s">周计划</span></div></div></section><section data-slot="lessons"><div class="wrap"><div class="sechead"><span class="eyebrow">教训</span><h2>认下这一笔小数</h2></div><div class="keynote keynote-tight"><p class="prose">小红书笔记互动率实际只有 0.8%，低于设定的 2% 目标线——图文类素材在这两个月里没有跑赢视频，图文更适合做背景种草，转化还是靠视频。</p><p class="prose">如果有下一轮，预算会更早地往视频倾斜，图文只留一小部分测试位，不再按视频的等比例投放。</p></div></div></section><section data-slot="next"><div class="wrap"><div class="sechead"><span class="eyebrow">下一步</span><h2>常驻功能正在评估中</h2></div><div class="qrc"><img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAC5UlEQVR4nO1abY6jMAx9NkjzE6QeoEehV5sjzQ3KUXqAlcjPkai8shPYll0FKs2wMPj9yAzxU2XFcvwRk+AVtPwSHXB+Hjwjn8L5efCMfArn58Ez8imcnwfPyKdw/hHOhxJKAKEEUQ3QJRABYZBdVtRnOfgF7oH5jSg6tap93ojQnnv9LEwk29Z/Mfhg/DL9DTXQfACCcCdp66Kn5goBAkBA0a+kDzv/e8+nPZsp7yRXu5+/+vdnwHOECZy/zH8HUHN7E2q60+CwE/h55sEbtW+lATbY/QyIOXEbMyrdW08fdv6Xng8ekycUgqabLMBDCnb188+DN8anf/UnLaEiVKNtR3h/cp/170WrXl3Q1uqr3f0htaILxs9t6r8cfMz7uYlLr6bVPVtE97pC5Folit/Pu82f76VYEawgTbeo+Tj1Vg5ru2Mtfdj532BfsdQKVV+mTFr32rpIllZB2vXzz4M3ySeNsET0pg2rsddcfWr/uYS8Wzt6RX2Wg1/gHth/27oTS5i19C3R1h2o6SBDEVwIbVN/dv4C+1JzKzXWkuVX6sRlrzZXJ/5FQHUf4rSfZx681f5GoWly/9TuqLRHqXujwPPnPfObWyqCRbR1FRE0JscQvXX9l4APmj+HU8yVAXySvRQ+Rt3w5vF3n/bF0MYA5Br7z7qrDQ1UeiHbnjU+/H7erX0ldags1sadGJNhprUg7PF3v/ZFms9JBhUxq46IUvff3fLl+idhjo8Mj7cyHnoe29R/OfiY9S8iCi2CdfTqVg4OHE69zux4/fsz5ifR1neyR0J5t3al+fTq+iwGL6cemh/SDWxLtDTUtC0RxUmOdfVZCl7MjDg6X8Yh6OGRIcXf/6TPHHiW8Yyj84nOVvVqzhXKNMnRnn2+/efMT5Yx4pIOQWt+Jen1fxV92PnfOz/5/LSAVCR5/2rv8xsJ8vSPDDb3/Gqn9mXnZ8F58V9wfh48I5/C+XnwjHwK5+extfP5DSGHgmuTFajcAAAAAElFTkSuQmCC" alt="查看完整数据二维码"><p class="qrl">长按识别，查看完整数据；是否扩城市，答案会先发在这里</p></div><footer><div class="wrap foot"><img class="logo-fs" style="width:74px" src="data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;240&#x27; height=&#x27;240&#x27;&gt;&lt;rect width=&#x27;100%&#x27; height=&#x27;100%&#x27; fill=&#x27;teal&#x27; rx=&#x27;24&#x27;/&gt;&lt;text x=&#x27;50%&#x27; y=&#x27;54%&#x27; fill=&#x27;white&#x27; font-family=&#x27;sans-serif&#x27; font-size=&#x27;22&#x27; text-anchor=&#x27;middle&#x27;&gt;PB&lt;/text&gt;&lt;/svg&gt;" alt="三城地铁读书角"><p>三城地铁读书角 · 虚构示例，仅用于演示 outbound-page-builder</p></div></footer></div></section>
+</body>
+</html>

@@ -19,6 +19,12 @@ SKELETONS = {
         Slot("off_stage", True), Slot("works", False), Slot("survey", False),
         Slot("heartbeat", False), Slot("next", True),
     ),
+    # campaign 复盘：一场投放/营销战役打完之后对外讲结果
+    "campaign": (
+        Slot("hero", True), Slot("context", True), Slot("playbook", True),
+        Slot("reach", False), Slot("results", True), Slot("voices", False),
+        Slot("lessons", False), Slot("next", True),
+    ),
     # 邀请函：为什么你该来
     "invite": (
         Slot("hero", True), Slot("why_you", True), Slot("agenda", True),

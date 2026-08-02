@@ -1,0 +1,31 @@
+page: page.html
+genre: recap
+facts: facts.json
+quotes: quotes.json
+corpus:
+  - absorb/**/*.md
+  - absorb/**/*.txt
+
+numbers:
+  auto_whitelist_from_facts: true
+  require_caption: true
+  ignore: ['\d{1,2}', '\d{4}\.\d{2}\.\d{2}', '\d{4}-\d{2}-\d{2}', '\d{4}/\d{2}/\d{2}']
+
+blacklist:
+  base: true
+  genre: true
+  extra: []
+  unban: []
+  exempt_zones: ['「」']
+  staff_names: [李示例]
+
+copy:
+  humanizer: true
+  max_we: 5
+  ban_contrast_pair: true
+  allow: []
+
+must_contain: []
+link_hosts: [example.com]
+asset_hosts: []
+link_check: skip

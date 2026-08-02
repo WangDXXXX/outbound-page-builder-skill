@@ -6,7 +6,7 @@ import yaml
 class ConfigError(Exception):
     pass
 
-GENRES = ("recap", "invite", "generic")
+GENRES = ("recap", "invite", "generic", "campaign")
 LINK_CHECK_VALUES = ("browser", "curl", "skip")
 
 _NUMBERS_DEFAULT = {"auto_whitelist_from_facts": True, "require_caption": True,

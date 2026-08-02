@@ -11,6 +11,8 @@ def _outline(keys, genre="invite"):
 INVITE_ALL = ["hero", "why_you", "agenda", "value", "people", "hook", "proof", "terms", "cta"]
 RECAP_ALL = ["hero", "buzz", "opening", "vs_last", "who_came", "on_stage",
              "off_stage", "works", "survey", "heartbeat", "next"]
+CAMPAIGN_ALL = ["hero", "context", "playbook", "reach", "results",
+                "voices", "lessons", "next"]
 
 
 class TestSkeleton(unittest.TestCase):
@@ -49,6 +51,29 @@ class TestSkeleton(unittest.TestCase):
 
     def test_recap_requires_its_own_slots(self):
         self.assertEqual(S.validate_outline(_outline(RECAP_ALL, "recap"), "recap"), [])
+
+    def test_campaign_has_8_slots(self):
+        self.assertEqual(len(S.SKELETONS["campaign"]), 8)
+
+    def test_campaign_complete_outline_passes(self):
+        self.assertEqual(
+            S.validate_outline(_outline(CAMPAIGN_ALL, "campaign"), "campaign"), [])
+
+    def test_campaign_missing_results_fails(self):
+        out = S.validate_outline(
+            _outline([k for k in CAMPAIGN_ALL if k != "results"], "campaign"),
+            "campaign")
+        self.assertTrue(any("results" in m for m in out))
+
+    def test_campaign_optional_slots_can_be_omitted(self):
+        keys = [k for k in CAMPAIGN_ALL if k not in ("reach", "voices", "lessons")]
+        self.assertEqual(
+            S.validate_outline(_outline(keys, "campaign"), "campaign"), [])
+
+    def test_campaign_slot_order_must_match_skeleton(self):
+        bad = _outline(["next"] + [k for k in CAMPAIGN_ALL if k != "next"],
+                       "campaign")
+        self.assertTrue(any("顺序" in m for m in S.validate_outline(bad, "campaign")))
 
 
 class TestSkeletonShapeRobustness(unittest.TestCase):

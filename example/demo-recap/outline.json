@@ -1,0 +1,266 @@
+{
+  "genre": "recap",
+  "title": "城市咖啡师交流夜 · 战报",
+  "og": {
+    "title": "137 位咖啡师，把一条巷子站满",
+    "description": "报名 203、到场 137，覆盖 42 家门店——一晚上的跨店交流，没人愿意先走。"
+  },
+  "slots": [
+    {
+      "key": "hero",
+      "components": [
+        {
+          "name": "sysbar",
+          "data": {
+            "text": "5 月 30 日 周六 · 深巷手冲实验室 · 137 位到场"
+          }
+        },
+        {
+          "name": "atm-layer",
+          "data": {}
+        },
+        {
+          "name": "section-head",
+          "data": {
+            "eyebrow": "城市咖啡师交流夜",
+            "title": "137 位咖啡师，把一条巷子站满"
+          }
+        },
+        {
+          "name": "stat-caption",
+          "data": {
+            "value": "137",
+            "label": "到场",
+            "caption": "覆盖 42 家门店",
+            "compare_to": {
+              "value": "89",
+              "label": "上一场"
+            }
+          }
+        },
+        {
+          "name": "stat-caption",
+          "data": {
+            "value": "42",
+            "label": "覆盖门店数",
+            "caption": "比预期的 30 家出头多不少"
+          }
+        },
+        {
+          "name": "stat-caption",
+          "data": {
+            "value": "3",
+            "label": "盲测轮次",
+            "caption": "每轮 5 支豆子，猜产地和处理法"
+          }
+        }
+      ]
+    },
+    {
+      "key": "buzz",
+      "components": [
+        {
+          "name": "stat-caption",
+          "data": {
+            "value": "76",
+            "label": "自发分享帖",
+            "caption": "不含转发，活动结束后各自账号发的"
+          }
+        },
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "「打烊时间到了没人愿意走，店主干脆把卷帘门拉到一半接着聊」",
+            "speaker": "王样本",
+            "link": ""
+          }
+        }
+      ]
+    },
+    {
+      "key": "who_came",
+      "components": [
+        {
+          "name": "donut",
+          "data": {
+            "title": "谁来了",
+            "segments": [
+              {
+                "label": "独立门店咖啡师",
+                "pct": 58
+              },
+              {
+                "label": "烘焙师",
+                "pct": 21
+              },
+              {
+                "label": "店主/合伙人",
+                "pct": 13
+              },
+              {
+                "label": "爱好者旁听",
+                "pct": 8
+              }
+            ]
+          }
+        },
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "「我们社区角落那家小店只有我一个人做咖啡，很少能碰到同行换手法」",
+            "speaker": "林小样",
+            "link": ""
+          }
+        },
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "「整体感觉比上一场松弛，因为没安排座次，大家自己找位置聊」",
+            "speaker": "王样本",
+            "link": ""
+          }
+        }
+      ]
+    },
+    {
+      "key": "on_stage",
+      "components": [
+        {
+          "name": "speaker-grid",
+          "data": {
+            "people": [
+              {
+                "name": "王样本",
+                "role": "手冲吧台示范",
+                "cover": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='saddlebrown'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>王样本 · 封面</text></svg>",
+                "shot": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='peru'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>王样本 · 花絮</text></svg>"
+              },
+              {
+                "name": "陈示范",
+                "role": "烘焙角示范",
+                "cover": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='sienna'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>陈示范 · 封面</text></svg>",
+                "shot": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='chocolate'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>陈示范 · 花絮</text></svg>"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "off_stage",
+      "components": [
+        {
+          "name": "photo-mosaic",
+          "data": {
+            "photos": [
+              {
+                "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='darkslategray'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>盲测桌全景</text></svg>",
+                "alt": "盲测桌全景"
+              },
+              {
+                "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='teal'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>手冲吧台排队</text></svg>",
+                "alt": "手冲吧台排队"
+              },
+              {
+                "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='darkolivegreen'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>烘焙角讲解</text></svg>",
+                "alt": "烘焙角讲解"
+              },
+              {
+                "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='steelblue'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>卷帘门下的深夜聊天</text></svg>",
+                "alt": "卷帘门下的深夜聊天"
+              },
+              {
+                "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='indianred'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>笔记本上的参数表</text></svg>",
+                "alt": "笔记本上的参数表"
+              },
+              {
+                "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='slategray'/><text x='50%' y='48%' fill='white' font-family='sans-serif' font-size='20' text-anchor='middle'>散场前的合影</text></svg>",
+                "alt": "散场前的合影"
+              }
+            ]
+          }
+        },
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "「有人抱着自己烘的豆子来换手冲教程，最后干脆换成了半份账单」",
+            "speaker": "周演示",
+            "link": ""
+          }
+        }
+      ]
+    },
+    {
+      "key": "works",
+      "components": [
+        {
+          "name": "award-list",
+          "data": {
+            "awards": [
+              {
+                "category": "拉花图案 · 现场投票",
+                "winner": "王样本",
+                "note": "现场用便签投票选出的图案，得票最集中的一杯"
+              },
+              {
+                "category": "手冲参数 · 交流共创",
+                "winner": "全体到场咖啡师",
+                "note": "当晚各桌交流出的参数汇总成一张表"
+              }
+            ]
+          }
+        },
+        {
+          "name": "quote-card",
+          "data": {
+            "text": "「我们几个把当晚聊到的参数凑成一张表，回去就贴在了吧台后面」",
+            "speaker": "陈示范",
+            "link": ""
+          }
+        }
+      ]
+    },
+    {
+      "key": "next",
+      "components": [
+        {
+          "name": "section-head",
+          "data": {
+            "eyebrow": "下一场",
+            "title": "还是隔两个月一次的节奏"
+          }
+        },
+        {
+          "name": "cta-pills",
+          "data": {
+            "title": "日期定下来第一时间公布",
+            "text": "扫码看这次完整的战报页面，第一时间收到下一场的消息。",
+            "buttons": [
+              {
+                "label": "查看完整战报",
+                "href": "https://example.com/report",
+                "variant": "primary"
+              }
+            ]
+          },
+          "longpic": {
+            "name": "qr-closure",
+            "data": {
+              "qr": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAAB50lEQVR4nO1bQY6DMAycJEh7DD+CH/TL8CO4U3llJ5S2e4m0UrHKzAFB8MHyMHFihyBoxBxbLQGaRgYL/FyaEWkKBqsZkaZQhIoOIfQ6sIYQRr0YRgbL1ecyiGIBZMI9AFl09ZFsVJz52oL43abrQ0IqtXHt6p3q7SMONCDi6qbd23NAToK5R/iQA5Gm+E+w7gHDwrh61lbW7LTarWrrVh/Fk6/x8qZ4XkcoUcNyXPZhW4NMDFb0oS05BuY+lRt5VRbO9zXSFApbDtoGyxRVlvGz7bX6+hYMFvzMhEmAvEGmvKFSZpsuHTNMp/saL2+KSkW23bFuh4u2jkvdIgvZghe2RFcUg+yyKpSZrOyRbLkynUt18EdVtiGMNglqQUNfMG95y1t5e89gtm43vVFbvtiSmq2UKMtWypZR9ijtCvMW3LAlRo+Kac9gZaykMbLliS3UMsYreQXUlje2DpQxmxNr3toxne5rpClee8d1JrQS4d7kYrAc947TXh7UVYaVn1h58pW3hqKo9Le/z7zl2FRk0YJuv1ee9JHa8trpN4RhueuLtGG+bZ048TVe3rT70zvOomcydE5cez2cwVM07j6X+amXpSfUrL/V15I8Z0IvbAX+tYCTKYg0BYPVjEhTMFjN+NJg/QIuhVy3zPQVygAAAABJRU5ErkJggg==",
+              "alt": "查看完整战报二维码",
+              "lines": "长按识别，查看完整战报；下一场日期定下来第一时间公布"
+            }
+          }
+        },
+        {
+          "name": "footer-brand",
+          "data": {
+            "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><rect width='100%' height='100%' fill='saddlebrown' rx='24'/><text x='50%' y='54%' fill='white' font-family='sans-serif' font-size='22' text-anchor='middle'>CCM</text></svg>",
+            "alt": "城市咖啡师交流夜",
+            "lines": "城市咖啡师交流夜 · 虚构示例，仅用于演示 outbound-page-builder"
+          }
+        }
+      ]
+    }
+  ]
+}

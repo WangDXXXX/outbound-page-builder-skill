@@ -1,5 +1,14 @@
 # 发布：`--id` 硬规则 + 验收 + 降级路径
 
+## 安装与登录（第一次用之前做一次）
+
+```bash
+npm i -g magic-builder
+magic-builder auth login
+```
+
+`auth login` 会打印一条授权链接并尝试自动帮你打开浏览器，用你自己的 Magic 账号登录同意后，CLI 在后台轮询直到授权完成，把 token 写进 `~/.magic-builder/magic-token`，之后 preflight 会自动检测到，不需要手动粘贴 token。`magic-builder auth show`（脱敏展示当前 token）随时确认自己是否已登录。
+
 ## `--id` 缺失即拒绝执行
 
 ```bash
